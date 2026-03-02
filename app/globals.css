@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3.9%; /* obsidian-950 equivalent for dark mode */
+    --foreground: 210 20% 98%; /* Light for text on dark bg */
+    --card: 210 40% 9.8%;
+    --card-foreground: 210 20% 98%;
+    --popover: 210 40% 9.8%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 220 70% 50%; /* obsidian-500 */
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 10% 20%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 10% 20%;
+    --muted-foreground: 215 14% 70%;
+    --accent: 40 100% 60%; /* gold-500 */
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 220 70% 50%;
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --primary: 220 70% 50%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 40 100% 60%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 220 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "liga" 0;
+  }
+}
+
+/* Glassmorphism base effect */
+.glass {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Animated gradient border effect */
+.animated-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(255, 215, 0, 0.7) 10%, /* Gold-like */
+    transparent 20%,
+    transparent 80%,
+    rgba(0, 191, 255, 0.7) 90%, /* Deep Blue-like */
+    transparent 100%
+  );
+  animation: border-spin 4s linear infinite;
+  z-index: -1;
+}
+
+/* Custom scrollbar for a sleek look */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--background);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  border: 2px solid var(--background);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Specific styling for code blocks if needed */
+pre {
+  @apply bg-obsidian-900 text-obsidian-100 p-4 rounded-lg overflow-x-auto font-mono text-sm;
+}
+
+code {
+  @apply bg-obsidian-800 px-1 py-0.5 rounded text-obsidian-50 font-mono text-sm;
+}
